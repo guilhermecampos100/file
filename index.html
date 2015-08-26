@@ -117,12 +117,14 @@ doDirectoryListing();
 
 function onDeviceReady() {
 
+alert('device ready');
 //request the persistent file system
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, onError);
 
 }
 
 function init() {
+alert('funcao init');
 document.addEventListener("deviceready", onDeviceReady, true);
 }
 </script>
@@ -133,7 +135,7 @@ button { width: 100%; padding: 5px; }
 </head>
 
 <body onload="init();" id="stage" class="theme">
-
+Vamos testar
 <button id="addFileButton">Create/Append to Test File</button>
 <button id="readFileButton">Read Test File</button>
 <button id="metadataFileButton">Get Test File Metadata</button>
