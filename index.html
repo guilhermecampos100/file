@@ -8,9 +8,10 @@
         <script type="text/javascript" src="cordova-2.6.0.js"></script>
         <script type="text/javascript">
             var showMessageBox = function() {
-                navigator.notification.alert("Hello");
+               alert("Hello");
             }
             function init(){
+				alert('funcao init - chama o addeventlistener..');
                 document.addEventListener("deviceready", showMessageBox, true);
             }
         </script>
