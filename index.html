@@ -125,7 +125,9 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, onError);
 
 function init() {
 alert('funcao init');
-document.addEventListener("deviceready", onDeviceReady, true);
+ document.addEventListener("deviceready", function(){
+      alert("123");
+ },true);
 }
 </script>
 
@@ -136,7 +138,7 @@ button { width: 100%; padding: 5px; }
 
 <body onload="init();" id="stage" class="theme">
 Vamos testar<BR>
-<button id="addFileButton">CRIA/Append to Test File</button>
+<button id="addFileButton">CRIA 2/Append to Test File</button>
 <button id="readFileButton">Read Test File</button>
 <button id="metadataFileButton">Get Test File Metadata</button>
 <button id="deleteFileButton">Delete Test File</button>
