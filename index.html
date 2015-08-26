@@ -21,6 +21,7 @@ getById("#content").innerHTML += s;
 
 //generic error handler
 function onError(e) {
+alert('erro');
 getById("#content").innerHTML = "<h2>Error</h2>"+e.toString();
 }
 
@@ -98,6 +99,8 @@ dirReader.readEntries(gotFiles,onError);
 }
 
 function onFSSuccess(fs) {
+
+alert('sucesso');
 fileSystem = fs;
 
 getById("#dirListingButton").addEventListener("touchstart",doDirectoryListing);
