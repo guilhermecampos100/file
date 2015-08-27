@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var fileSystem;
+ 
 var app = {
     // Application Constructor
     initialize: function() {
@@ -26,13 +28,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-	
-		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-			document.addEventListener("deviceready", this.onDeviceReady, false);
-		} else {
-			this.onDeviceReady();
-		}
-
+        document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -52,5 +48,16 @@ var app = {
 
         console.log('Received Event: ' + id);
 		alert('CHEGUEI AQUI');
-    }
+		
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, onError);
+    },
+	onFSSuccess(fs) {
+		alert('sucesso');
+		fileSystem = fs;
+		alert('sucesso 2');
+	}	
+		
+		
+		
+		
 };
