@@ -52,7 +52,7 @@ var app = {
 
         console.log('Received Event: ' + id);
 		alert('CHEGUEI AQUI');
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, onError);
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, this.onError);
     },
 	onFSSuccess: function(fs) {
 		alert('sucesso');
