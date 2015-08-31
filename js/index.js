@@ -82,7 +82,7 @@ var app = {
 		
 		getById("#criaDiretorio").addEventListener("touchstart",criaDiretorio);
 		getById("#gravaArquivo").addEventListener("touchstart",gravaArquivo);
-
+		getById("#listaDiretorioFotos").addEventListener("touchstart",listaDiretorioFotos);
 
 
 		alert( "Got the file system: "+fileSystem.name +"<br/>" + "root entry name is "+fileSystem.root.name + "<p/>");
@@ -165,7 +165,6 @@ logit(s);
 function doDirectoryListing(e) {
 //get a directory reader from our FS
 var dirReader = fileSystem.root.createReader();
-
 dirReader.readEntries(gotFiles,onError);
 }
 
@@ -188,9 +187,9 @@ function criaDiretorio() {
 function gravaArquivo() {
 	contador++;
 	nomearquivo = 'teste_'+contador;
-	function success(dirEntry) {
+	function grava(dirEntry) {
 		alert("Directory Name: " + dirEntry.name);
-		dirEntry.getFile("lockfile.txt", {create: true, exclusive: true}, pegueiArquivo);
+		dirEntry.getFile(nomearquivo, {create: true, exclusive: true}, pegueiArquivo);
 	}
 	
 	function fail(error) {
@@ -203,6 +202,18 @@ function gravaArquivo() {
 	}
 		
 	// Retrieve an existing directory, or create it if it does not already exist
-	fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
+	fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, grava, fail);
 	
 }
+
+
+function listaDiretorioFotos() {
+var dirfotos = fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, grava, fail);
+var dirReader = dirfotos.createReader();
+dirReader.readEntries(gotFiles,onError);
+}
+
+
+
+
+
