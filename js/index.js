@@ -145,21 +145,21 @@ fileSystem.root.getFile("test.txt", {create:true}, appendFile, onError);
 }
 
 function gotFiles(entries) {
-var s = "";
-for(var i=0,len=entries.length; i<len; i++) {
-//entry objects include: isFile, isDirectory, name, fullPath
-s+= entries[i].fullPath;
-if (entries[i].isFile) {
-s += " [F]";
-}
-else {
-s += " [D]";
-}
-s += "<br/>";
+	var s = "";
+	for(var i=0,len=entries.length; i<len; i++) {
+	//entry objects include: isFile, isDirectory, name, fullPath
+	s+= entries[i].fullPath;
+	if (entries[i].isFile) {
+	s += " [F]";
+	}
+	else {
+	s += " [D]";
+	}
+	s += "<br/>";
 
-}
-s+="<p/>";
-logit(s);
+	}
+	s+="<p/>";
+	logit(s);
 }
 
 function doDirectoryListing(e) {
