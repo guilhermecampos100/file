@@ -163,6 +163,6 @@ var dirReader = fileSystem.root.createReader();
 dirReader.readEntries(gotFiles,onError);
 }
 
-function onError: function() {
-	alert('deu erro');
+function onError() {
+	alert('deu erro testando');
 }	
