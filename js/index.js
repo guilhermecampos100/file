@@ -208,7 +208,7 @@ function gravaArquivo(e) {
 
 
 function listaDiretorioFotos(e) {
-	var dirfotos = fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, sucess, fail);
+	var dirfotos = fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
 	var dirReader = dirfotos.createReader();
 	dirReader.readEntries(gotFiles,onError);
 	
