@@ -17,6 +17,7 @@
  * under the License.
  */
  
+ contador = 0;
  //generic getById
 function getById(id) {
 return document.querySelector(id);
@@ -78,6 +79,11 @@ var app = {
 		getById("#readFileButton").addEventListener("touchstart",doReadFile);
 		getById("#metadataFileButton").addEventListener("touchstart",doMetadataFile);
 		getById("#deleteFileButton").addEventListener("touchstart",doDeleteFile);
+		
+		getById("#criaDiretorio").addEventListener("touchstart",criaDiretorio);
+		getById("#gravaArquivo").addEventListener("touchstart",gravaArquivo);
+
+
 
 		alert( "Got the file system: "+fileSystem.name +"<br/>" + "root entry name is "+fileSystem.root.name + "<p/>");
 
@@ -166,3 +172,37 @@ dirReader.readEntries(gotFiles,onError);
 function onError() {
 	alert('deu erro testando');
 }	
+
+function criaDiretorio() {
+	function success(dirEntry) {
+		alert("Directory Name: " + dirEntry.name);
+	}
+	function fail(error) {
+		alert("Unable to create new directory: " + error.code);
+	}
+	// Retrieve an existing directory, or create it if it does not already exist
+	fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
+}
+
+
+function gravaArquivo() {
+	contador++;
+	nomearquivo = 'teste_'+contador;
+	function success(dirEntry) {
+		alert("Directory Name: " + dirEntry.name);
+		dirEntry.getFile("lockfile.txt", {create: true, exclusive: true}, pegueiArquivo);
+	}
+	
+	function fail(error) {
+		alert("Nao abri o diretorio: " + error.code);
+	}
+	
+	function pegueiArquivo(arquivo) {
+		alert('cheguei apos a criacao do arquivo');
+		alert(arquivo.name);
+	}
+		
+	// Retrieve an existing directory, or create it if it does not already exist
+	var fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
+	
+}
