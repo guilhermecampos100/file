@@ -172,7 +172,7 @@ function onError() {
 	alert('deu erro testando');
 }	
 
-function criaDiretorio() {
+function criaDiretorio(e) {
 	function success(dirEntry) {
 		alert("Directory Name: " + dirEntry.name);
 	}
@@ -184,7 +184,7 @@ function criaDiretorio() {
 }
 
 
-function gravaArquivo() {
+function gravaArquivo(e) {
 	contador++;
 	nomearquivo = 'teste_'+contador;
 	function grava(dirEntry) {
@@ -207,10 +207,19 @@ function gravaArquivo() {
 }
 
 
-function listaDiretorioFotos() {
-var dirfotos = fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, grava, fail);
-var dirReader = dirfotos.createReader();
-dirReader.readEntries(gotFiles,onError);
+function listaDiretorioFotos(e) {
+	var dirfotos = fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, sucess, fail);
+	var dirReader = dirfotos.createReader();
+	dirReader.readEntries(gotFiles,onError);
+	
+	function success(dirEntry) {
+		alert("Directory Name: " + dirEntry.name);
+	}
+	function fail(error) {
+		alert("Unable to create new directory: " + error.code);
+	}
+	
+	
 }
 
 
