@@ -156,4 +156,10 @@ s+="<p/>";
 logit(s);
 }
 
+function doDirectoryListing(e) {
+//get a directory reader from our FS
+var dirReader = fileSystem.root.createReader();
+
+dirReader.readEntries(gotFiles,onError);
+}
 
