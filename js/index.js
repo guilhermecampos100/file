@@ -163,6 +163,6 @@ var dirReader = fileSystem.root.createReader();
 dirReader.readEntries(gotFiles,onError);
 }
 
-onError: function() {
+function onError: function() {
 	alert('deu erro');
 }	
