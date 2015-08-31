@@ -203,6 +203,6 @@ function gravaArquivo() {
 	}
 		
 	// Retrieve an existing directory, or create it if it does not already exist
-	var fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
+	fileSystem.root.getDirectory("fotos", {create: true, exclusive: false}, success, fail);
 	
 }
