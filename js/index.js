@@ -71,12 +71,15 @@ var app = {
 		alert('sucesso 2');
 		
 		getById("#dirListingButton").addEventListener("touchstart",doDirectoryListing);
+		
+		alert('sucesso3');
+		
 		getById("#addFileButton").addEventListener("touchstart",doAppendFile);
 		getById("#readFileButton").addEventListener("touchstart",doReadFile);
 		getById("#metadataFileButton").addEventListener("touchstart",doMetadataFile);
 		getById("#deleteFileButton").addEventListener("touchstart",doDeleteFile);
 
-		logit( "Got the file system: "+fileSystem.name +"<br/>" + "root entry name is "+fileSystem.root.name + "<p/>")
+		alert( "Got the file system: "+fileSystem.name +"<br/>" + "root entry name is "+fileSystem.root.name + "<p/>");
 
 		doDirectoryListing();
 		
